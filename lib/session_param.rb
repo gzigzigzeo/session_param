@@ -1,7 +1,7 @@
 module SessionParam
   class Ralitie < ::Rails::Railtie  
     initializer "session_param.initialize" do
-      SessionParam::Ralitie.setup!
+      SessionParam.setup!
     end
   end
   

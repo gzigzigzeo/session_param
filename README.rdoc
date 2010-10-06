@@ -1,0 +1,33 @@
+= SessionParam
+
+Easy method to save search parameters in session and populate them from params[]
+
+= Example
+
+  class SearchController
+    session_param :section_equals, ""
+    session_param :search, {:order => "name"}, true
+    session_param :ids, []
+
+    def index
+      logger.info section_equals.inspect
+      logger.info search.inspect
+      logger.info ids.inspect
+    end
+  end
+
+  map.search :controller => 'search', :action => 'index' 
+
+Requests:
+  /search                                            # LOG: "", {:order => "name"}, []
+  /search?section_equals=5&search[name]=foo&ids=10   # LOG: 5,  {:order => "name", :name => "test"}, []
+
+On second request: ids == [] because default value class is the Array, order has :order key because merge is true    
+
+This will be saved in session. You can also use methods in your views.
+
+= ToDo
+1. Tests.
+2. default value block
+
+Copyright (c) 2010 Viktor Sokolov <gzigzigzeo@gmail.com>, released under the MIT license

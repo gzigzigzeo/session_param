@@ -18,6 +18,7 @@ module SessionParam
     def session_param(param_name, default, merge = false)
       define_method param_name do
         param = params[param_name]
+        default = instance_exec(&default) if default.is_a?(Proc)
         param.deep_merge!(default) if default.is_a?(Hash) && merge
         param = param | default if default.is_a?(Array) && merge
         param = {} if default.is_a?(Hash) && (param.empty? || !param.is_a?(Hash))   # ?param=

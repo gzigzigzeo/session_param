@@ -5,15 +5,19 @@
 
 Gem::Specification.new do |s|
   s.name = %q{session_param}
-  s.version = "1.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Victor Sokolov"]
-  s.date = %q{2010-10-05}
+  s.date = %q{2010-10-14}
   s.email = %q{gzigzigzeo@gmail.com}
+  s.extra_rdoc_files = [
+    "README.rdoc"
+  ]
   s.files = [
     "Gemfile",
      "Gemfile.lock",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
      "lib/session_param.rb",
@@ -24,6 +28,10 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Easy method to save search parameters in session and populate them from params[]}
+  s.test_files = [
+    "spec/controllers/test_controller_spec.rb",
+     "spec/spec_helper.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION

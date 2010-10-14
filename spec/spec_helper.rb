@@ -22,13 +22,16 @@ end
 
 class TestsController < ActionController::Base
   session_param 'foo', ''
+  session_param 'bar', proc { '1' }
   include Rails.application.routes.url_helpers
   
-  def index; render :text => foo; end
+  def foo_a; render :text => foo; end
+  def bar_a; render :text => bar; end  
 end
 
 SessionParam::Application.routes.draw do
-  resources :tests
+  match '/tests/foo' => "tests#foo_a"
+  match '/tests/bar' => "tests#bar_a"
 end
 
 require 'rspec/rails'

@@ -21,8 +21,8 @@ module SessionParam
         default = instance_exec(&default) if default.is_a?(Proc)
         param.deep_merge!(default) if default.is_a?(Hash) && merge
         param = param | default if default.is_a?(Array) && merge
-        param = {} if default.is_a?(Hash) && (param.empty? || !param.is_a?(Hash))   # ?param=
-        param = [] if default.is_a?(Array) && (param.empty? || !param.is_a?(Array)) # or type mismatch        
+        param = {} if default.is_a?(Hash) && (param.blank? || !param.is_a?(Hash))   # ?param=
+        param = [] if default.is_a?(Array) && (param.blank? || !param.is_a?(Array)) # or type mismatch        
         session[param_name] = param || session[param_name] || default
       end
       helper_method param_name
